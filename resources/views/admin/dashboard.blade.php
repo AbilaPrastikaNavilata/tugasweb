@@ -11,7 +11,7 @@
                       <div class="card-body">
                         <h5 class="card-title text-primary">Welcome {{(Auth::user()->name)}} 🎉</h5>
                         <p class="mb-4">
-                          Selamat bekerja dengan semangat. Semoga harimu menyenangkan.
+                          Semangat sayangku!!!! :V
                         </p>
                       </div>
                     </div>
