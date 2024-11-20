@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -22,7 +23,8 @@ class AdminController extends Controller
 
     public function pengguna()
     {
-        return view('admin.pengguna');
+        $users = User::where('is_admin', 0)->get();
+        return view('admin.pengguna', compact('users'));
     }
 
     public function tambahRuang()
