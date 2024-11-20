@@ -17,6 +17,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard/ruang', [AdminController::class, 'ruang'])->name('ruang');
     Route::get('/admin/dashboard/ruang/tambah', [AdminController::class, 'tambahRuang'])->name('tambahRuang');
     Route::get('/admin/dashboard/pengguna', [AdminController::class, 'pengguna'])->name('pengguna');
+    Route::get('/admin/dashboard/histori', [AdminController::class, 'historiPeminjaman'])->name('histori');
 });
 
 Auth::routes();

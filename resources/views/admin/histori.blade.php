@@ -4,7 +4,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4">
         <a href="{{route('dashboard')}}" class="text-muted fw-light">Dashboard /</a>
-        <a href="{{route('pengguna')}}"> Daftar Pengguna</a>
+        <a href="{{route('histori')}}"> Histori Peminjaman</a>
     </h4>
     <!-- Hoverable Table rows -->
     <div class="card">
