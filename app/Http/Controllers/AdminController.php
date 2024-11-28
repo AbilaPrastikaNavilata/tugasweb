@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ruang;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,8 @@ class AdminController extends Controller
     }
     public function ruang()
     {
-        return view('admin.ruang');
+        $ruangs = Ruang::all();
+        return view('admin.ruang', compact('ruangs'));
     }
 
     public function pengguna()
