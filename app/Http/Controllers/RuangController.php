@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\File;
 
 class RuangController extends Controller
 {
+
+    public function showRuangGuest()
+    {
+        $ruangs = Ruang::all();
+        return view('pinjamRuang', compact('ruangs'));
+    }
+
     public function store(Request $request)
     {
         $request->validate(
@@ -15,7 +22,7 @@ class RuangController extends Controller
                 'nama_ruang' => 'required',
                 'kapasitas' => 'required|numeric',
                 'fasilitas' => 'required',
-                'foto_ruang' => 'required|mimes:png,jpg,jpeg|max:2048',
+                'foto_ruang.*' => 'required|mimes:png,jpg,jpeg|max:2048', // Validation for multiple files
             ]
         );
 
@@ -26,11 +33,13 @@ class RuangController extends Controller
         $insert->fasilitas = $request->fasilitas;
 
         if ($request->hasFile('foto_ruang')) {
-            $file = $request->file('foto_ruang');
-            $file_name = time() . $file->getClientOriginalName();
-
-            $file->move($filePath, $file_name);
-            $insert->foto_ruang = $file_name;
+            $uploadedFiles = [];
+            foreach ($request->file('foto_ruang') as $file) {
+                $file_name = time() . $file->getClientOriginalName();
+                $file->move($filePath, $file_name);
+                $uploadedFiles[] = $file_name;
+            }
+            $insert->foto_ruang = json_encode($uploadedFiles); // Save filenames as JSON
         }
 
         $result = $insert->save();

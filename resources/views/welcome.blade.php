@@ -24,13 +24,7 @@
                                 <h5 class="text-white text-uppercase mb-3 animated slideInDown">Dinas Perpustakaan dan Kearsipan Daerah </h5>
                                 <h1 class="display-3 text-white animated slideInDown mb-4">Perpustakaan Daerah Kabupaten <span class="text-primary">Kendal</span></h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                @guest
-                                    @if (Route::has('login'))
-                                        <a href="{{route('login')}}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Pinjam Ruang</a>
-                                    @endif
-                                @else
-                                    <a href="{{route('pinjamRuang')}}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Pinjam Ruang</a>
-                                @endguest
+                                <a href="{{route('pinjamRuang')}}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Pinjam Ruang</a>
                                 <a href="/cekjadwal" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Cek Jadwal</a>
                             </div>
                         </div>

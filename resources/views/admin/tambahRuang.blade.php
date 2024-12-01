@@ -69,14 +69,14 @@
         <div class="row mb-3">
           <label class="col-sm-2 col-form-label" for="basic-default-name">Foto Ruang</label>
           <div class="col-sm-10">
-            <input class="form-control" type="file" id="formFile" name="foto_ruang" accept=".png, .jpg, .jpeg" onchange="previewImage(this)" />
+              <input class="form-control" type="file" id="formFile" name="foto_ruang[]" multiple accept=".png, .jpg, .jpeg" onchange="previewImage(this)" />
           </div>
           @error('foto_ruang')
               <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
               </span>
           @enderror
-        </div>
+      </div>
         <div class="row justify-content-end">
           <div class="col-sm-10">
             <button type="submit" class="btn btn-primary">Tambah</button>

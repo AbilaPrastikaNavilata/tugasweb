@@ -9,18 +9,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/users', [App\Http\Controllers\AdminController::class, 'users'])
-    ->middleware(['auth', 'admin'])
-    ->name('admin.users');
+Route::get('/pinjam-ruang', [RuangController::class, 'showRuangGuest'])->name('pinjamRuang');
 
 Route::get('/cekjadwal', function () {
     return view('cekjadwal');
-});
-
-Route::middleware('auth')->group(function () {
-    Route::get('/pinjamRuang', function () {
-        return view('pinjamRuang');
-    })->name('pinjamRuang');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -38,5 +30,3 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

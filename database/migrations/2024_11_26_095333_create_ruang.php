@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name_ruang');
             $table->string('kapasitas');
             $table->string('fasilitas');
-            $table->string('foto_ruang');
+            $table->text('foto_ruang'); // Change to text to store JSON
             $table->timestamps();
         });
     }
