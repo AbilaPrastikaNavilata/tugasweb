@@ -54,21 +54,134 @@
                                 <span class="visually-hidden">Next</span>
                                 </a>
                             </div>
-                        <div class="card-body">
-                            <h5 class="card-title">{{$ruang->name_ruang}}</h5>
-                            <p class="card-text">
-                                Kapasitas: {{ $ruang->kapasitas }} orang
-                            </p>
-                            <p class="card-text">
-                                Fasilitas:
-                                @if (is_string($ruang->fasilitas))
-                                    {{$ruang->fasilitas}}
-                                @else
-                                    Tidak ada fasilitas.
-                                @endif
-                            </p>
-                            <a href="javascript:void(0)" class="btn btn-outline-primary">Pinjam</a>
-                        </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{$ruang->name_ruang}}</h5>
+                                <p class="card-text">
+                                    Kapasitas: {{ $ruang->kapasitas }} orang
+                                </p>
+                                <p class="card-text">
+                                    Fasilitas:
+                                    @if (is_string($ruang->fasilitas))
+                                        {{$ruang->fasilitas}}
+                                    @else
+                                        Tidak ada fasilitas.
+                                    @endif
+                                </p>
+                                @guest
+                                  <div class="mt-3">
+                                    <a href="{{route('login')}}">
+                                      <button
+                                      type="button"
+                                      class="btn btn-primary"
+                                    >
+                                      Pinjam
+                                    </button>
+                                    </a>
+                                  </div>
+                                  @else
+                                    <div class="mt-3">
+                                      <!-- Button trigger modal -->
+                                      <button
+                                        type="button"
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalCenter"
+                                      >
+                                        Pinjam
+                                      </button>
+              
+                                      <!-- Modal -->
+                                      <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="modalCenterTitle">Form Peminjaman Ruang {{$ruang->name_ruang}}</h5>
+                                              <button
+                                                type="button"
+                                                class="btn-close"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close"
+                                              ></button>
+                                            </div>
+                                            <form action="{{route('peminjaman.store')}}" method="POST" enctype="multipart/form-data">
+                                              @csrf
+                                              <input type="hidden" name="ruang_id" value="{{$ruang->id}}">
+                                              <div class="modal-body">
+                                                <div class="row">
+                                                  <div class="col mb-3">
+                                                    <label for="nameWithTitle" class="form-label">Name</label>
+                                                    <input
+                                                      type="text"
+                                                      id="nameWithTitle"
+                                                      class="form-control"
+                                                      placeholder="Enter Name"
+                                                      value="{{ Auth::user()->name }}"
+                                                      disabled
+                                                    />
+                                                  </div>
+                                                </div>
+                                                <div class="row g-2">
+                                                  <div class="col mb-0">
+                                                    <label for="emailWithTitle" class="form-label">Email</label>
+                                                    <input
+                                                      type="text"
+                                                      id="emailWithTitle"
+                                                      class="form-control"
+                                                      placeholder="xxxx@xxx.xx"
+                                                      value="{{Auth::user()->email}}"
+                                                      disabled
+                                                    />
+                                                  </div>
+                                                  <div class="col mb-3">
+                                                    <label for="dobWithTitle" class="form-label">Instansi</label>
+                                                    <input
+                                                      type="text"
+                                                      id="dobWithTitle"
+                                                      class="form-control"
+                                                      disabled
+                                                      value="{{Auth::user()->instansi}}"
+                                                    />
+                                                  </div>
+                                                </div>
+                                                <div class="row g-2">
+                                                  <div class="col mb-3">
+                                                    <label for="emailWithTitle" class="form-label">Tanggal Peminjaman</label>
+                                                    <input
+                                                      type="date"
+                                                      name="tanggal_peminjaman"
+                                                      id="emailWithTitle"
+                                                      class="form-control"
+                                                      placeholder="xxxx@xxx.xx"
+                                                      required
+                                                    />
+                                                  </div>
+                                                </div>
+                                                <div class="row g-2">
+                                                  <div class="col mb-3">
+                                                    <label for="dobWithTitle" class="form-label">Upload Surat Peminjaman</label>
+                                                    <input
+                                                      type="file"
+                                                      name="surat"
+                                                      id="dobWithTitle"
+                                                      class="form-control"
+                                                      required
+                                                    />
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                  Close
+                                                </button>
+                                                <button type="submit" class="btn btn-primary">Pinjam Ruang</button>
+                                              </div>
+                                            </form>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                @endguest
+                            </div>
                         </div>
                     </div>
                 @endforeach

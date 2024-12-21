@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\RuangController;
 use App\Models\Ruang;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,10 @@ Route::get('/cekjadwal', function () {
     return view('cekjadwal');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::post('/pinjam', [PeminjamanController::class, 'store'])->name('peminjaman.store');
+});
+
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/users', [AdminController::class, 'users']);
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -27,6 +32,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard/ruang/edit/{id}', [RuangController::class, 'edit'])->name('ruang.edit');
     Route::post('/admin/dashboard/ruang/update/{id}', [RuangController::class, 'update'])->name('ruang.update');
     Route::delete('/admin/dashboard/ruang/delete/{id}', [RuangController::class, 'destroy'])->name('ruang.destroy');
+
+    Route::put('/admin/dashboard/peminjaman/{id}/status', [PeminjamanController::class, 'updateStatus'])->name('peminjaman.updateStatus');
 });
 
 Auth::routes();

@@ -33,7 +33,7 @@
                       <div class="carousel-inner">
                           @foreach(json_decode($ruang->foto_ruang, true) as $key => $image)
                           <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                              <img src="{{ asset('uploads/' . $image) }}" class="d-block w-100" style="height: 150px; width: 150px; object-fit: cover;" alt="Image">
+                              <img src="{{ asset('uploads/' . $image) }}" class="d-block w-100" style="height: 100px; width: 150px; object-fit: cover;" alt="Image">
                           </div>
                           @endforeach
                       </div>

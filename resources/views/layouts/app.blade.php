@@ -30,6 +30,9 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    {{-- Admin stylsheet --}}
+    
 </head>
 <body>
     <div id="app">

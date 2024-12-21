@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ruang;
 use App\Models\User;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,7 +16,8 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $peminjamans = Peminjaman::where('status', 'diproses')->get();
+        return view('admin.dashboard', compact('peminjamans'));
     }
     public function ruang()
     {
@@ -36,6 +38,7 @@ class AdminController extends Controller
 
     public function historiPeminjaman()
     {
-        return view('admin.histori');
+        $peminjamans = Peminjaman::all();
+        return view('admin.histori', compact('peminjamans'));
     }
 }
