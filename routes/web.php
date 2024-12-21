@@ -3,18 +3,16 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\RuangController;
+use App\Http\Controllers\CekJadwalController;
 use App\Models\Ruang;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PeminjamanController::class, 'historiPengguna'])->name('welcome');
 
 Route::get('/pinjam-ruang', [RuangController::class, 'showRuangGuest'])->name('pinjamRuang');
 
-Route::get('/cekjadwal', function () {
-    return view('cekjadwal');
-});
+Route::get('/cek-jadwal', [CekJadwalController::class, 'cekJadwal'])->name('jadwal');
+Route::get('/cek-jadwal/filter', [CekJadwalController::class, 'filterByMonth'])->name('filter');
 
 Route::middleware('auth')->group(function () {
     Route::post('/pinjam', [PeminjamanController::class, 'store'])->name('peminjaman.store');

@@ -16,8 +16,10 @@ class AdminController extends Controller
 
     public function dashboard()
     {
+        $jumlahPeminjaman = Peminjaman::all()->count();
+        $jumlahPengguna = User::where('is_admin', 0)->count();
         $peminjamans = Peminjaman::where('status', 'diproses')->get();
-        return view('admin.dashboard', compact('peminjamans'));
+        return view('admin.dashboard', compact('peminjamans', 'jumlahPeminjaman', 'jumlahPengguna'));
     }
     public function ruang()
     {

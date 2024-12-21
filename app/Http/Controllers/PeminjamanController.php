@@ -53,4 +53,13 @@ class PeminjamanController extends Controller
         return redirect()->back();
     }
 
+    public function historiPengguna(){
+        $user = Auth::user();
+
+        if ($user) {
+            $historiPeminjamans = Peminjaman::where('user_id', $user->id)->get();
+        }
+
+        return view('welcome', compact('historiPeminjamans'));
+    }
 }

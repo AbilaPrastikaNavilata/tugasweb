@@ -25,7 +25,7 @@
                                 <h1 class="display-3 text-white animated slideInDown mb-4">Perpustakaan Daerah Kabupaten <span class="text-primary">Kendal</span></h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
                                 <a href="{{route('pinjamRuang')}}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Pinjam Ruang</a>
-                                <a href="/cekjadwal" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Cek Jadwal</a>
+                                <a href="{{route('jadwal')}}" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Cek Jadwal</a>
                             </div>
                         </div>
                     </div>

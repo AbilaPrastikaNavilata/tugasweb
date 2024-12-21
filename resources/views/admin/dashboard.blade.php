@@ -42,24 +42,9 @@
                               class="rounded"
                             />
                           </div>
-                          <div class="dropdown">
-                            <button
-                              class="btn p-0"
-                              type="button"
-                              id="cardOpt3"
-                              data-bs-toggle="dropdown"
-                              aria-haspopup="true"
-                              aria-expanded="false"
-                            >
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                              <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                            </div>
-                          </div>
                         </div>
-                        <span class="fw-semibold d-block mb-1">Profit</span>
-                        <h3 class="card-title mb-2">$12,628</h3>
+                        <span class="fw-semibold d-block mb-1">Pengguna</span>
+                        <h3 class="card-title mb-1">{{$jumlahPengguna}}</h3>
                       </div>
                     </div>
                   </div>
@@ -74,24 +59,9 @@
                               class="rounded"
                             />
                           </div>
-                          <div class="dropdown">
-                            <button
-                              class="btn p-0"
-                              type="button"
-                              id="cardOpt6"
-                              data-bs-toggle="dropdown"
-                              aria-haspopup="true"
-                              aria-expanded="false"
-                            >
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                              <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                            </div>
-                          </div>
                         </div>
-                        <span>Sales</span>
-                        <h3 class="card-title text-nowrap mb-1">$4,679</h3>
+                        <span class="fw-semibold d-block mb-1">Peminjaman</span>
+                        <h3 class="card-title mb-1">{{$jumlahPeminjaman}}</h3>
                       </div>
                     </div>
                   </div>
