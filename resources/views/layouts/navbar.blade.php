@@ -16,9 +16,11 @@
                     @if (Auth::user()->is_admin)
                         <a href="{{route('dashboard')}}" class="dropdown-item">Dashboard</a>
                     @endif
-                    <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Histori Peminjaman
-                    </button>
+                    @auth
+                        <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Histori Peminjaman
+                        </button>
+                    @endauth
                     <a href="feature.html" class="dropdown-item" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                          {{ __('Keluar') }}
@@ -32,6 +34,7 @@
         </div>
     </div>
 </nav>
+@auth
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -80,4 +83,5 @@
       </div>
     </div>
 </div>
+@endauth
 <!-- Navbar End -->

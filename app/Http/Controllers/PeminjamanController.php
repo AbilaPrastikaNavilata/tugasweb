@@ -54,12 +54,12 @@ class PeminjamanController extends Controller
     }
 
     public function historiPengguna(){
-        $user = Auth::user();
-
-        if ($user) {
+        if(Auth::check()){
+            $user = Auth::user();
             $historiPeminjamans = Peminjaman::where('user_id', $user->id)->get();
+            return view('welcome', compact('historiPeminjamans'));
+        } else {
+            return view('welcome');
         }
-
-        return view('welcome', compact('historiPeminjamans'));
     }
 }
