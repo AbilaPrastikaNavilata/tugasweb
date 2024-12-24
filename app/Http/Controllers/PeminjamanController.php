@@ -43,7 +43,7 @@ class PeminjamanController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required|in:dipinjam,batal',
+            'status' => 'required',
         ]);
 
         $peminjaman = Peminjaman::findOrFail($id);
@@ -54,10 +54,15 @@ class PeminjamanController extends Controller
     }
 
     public function historiPengguna(){
-        if(Auth::check()){
+        if (Auth::check()) {
             $user = Auth::user();
-            $historiPeminjamans = Peminjaman::where('user_id', $user->id)->get();
-            return view('welcome', compact('historiPeminjamans'));
+            $historiPeminjamans = Peminjaman::where('user_id', $user->id)->with('ruang')->get();
+    
+            if ($historiPeminjamans->isNotEmpty()) {
+                return view('welcome', compact('historiPeminjamans')); // Data diteruskan
+            } else {
+                return view('welcome');
+            }
         } else {
             return view('welcome');
         }

@@ -44,7 +44,7 @@
         </div>
         <div class="modal-body">
           <p class="text-center">Berikut adalah histori peminjaman ruang yang anda buat.</p>
-            @if ($historiPeminjamans->isNotEmpty())
+            @if (isset($historiPeminjamans) && $historiPeminjamans->isNotEmpty())
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped">
                         <thead>

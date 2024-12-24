@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('ruang_id');
             $table->date('tanggal_peminjaman');
-            $table->enum('status', ['diproses', 'dipinjam', 'batal'])->default('diproses');
+            $table->enum('status', ['peminjaman diproses', 'peminjaman diterima', 'peminjaman ditolak', 'peminjaman selesai'])->default('peminjaman diproses');
             $table->string('surat_peminjaman')->nullable();
             $table->timestamps();
 

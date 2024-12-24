@@ -96,9 +96,10 @@
                                             <td><a href="{{ Storage::url($peminjaman->surat_peminjaman) }}" target="_blank">Surat Peminjaman</a></td>
                                             <td>
                                                 <span class="badge me-1 text-uppercase
-                                                    {{ strtolower($peminjaman->status) == 'diproses' ? 'bg-label-primary' :
-                                                       (strtolower($peminjaman->status) == 'dipinjam' ? 'bg-label-success' :
-                                                       (strtolower($peminjaman->status) == 'batal' ? 'bg-label-danger' : 'bg-label-secondary')) }}">
+                                                    {{ strtolower($peminjaman->status) == 'peminjaman diproses' ? 'bg-label-primary' :
+                                                       (strtolower($peminjaman->status) == 'peminjaman diterima' ? 'bg-label-success' :
+                                                       (strtolower($peminjaman->status) == 'peminjaman selesai' ? 'bg-label-warning' :
+                                                       (strtolower($peminjaman->status) == 'peminjaman ditolak' ? 'bg-label-danger' : 'bg-label-secondary'))) }}">
                                                     {{ $peminjaman->status }}
                                                 </span>
                                             </td>
@@ -111,14 +112,20 @@
                                                         <form action="{{ route('peminjaman.updateStatus', $peminjaman->id) }}" method="POST">
                                                             @csrf
                                                             @method('PUT')
-                                                            <input type="hidden" name="status" value="dipinjam">
-                                                            <button type="submit" class="dropdown-item"><span class="badge bg-label-success me-1">Dipinjam</span></button>
+                                                            <input type="hidden" name="status" value="peminjaman diterima">
+                                                            <button type="submit" class="dropdown-item"><span class="badge bg-label-success me-1">Peminjaman Diterima</span></button>
+                                                        </form>
+                                                        <form action="{{ route('peminjaman.updateStatus', $peminjaman->id) }}" method="POST">
+                                                          @csrf
+                                                          @method('PUT')
+                                                          <input type="hidden" name="status" value="peminjaman ditolak">
+                                                          <button type="submit" class="dropdown-item"><span class="badge bg-label-danger me-1">Peminjaman Ditolak</span></button>
                                                         </form>
                                                         <form action="{{ route('peminjaman.updateStatus', $peminjaman->id) }}" method="POST">
                                                             @csrf
                                                             @method('PUT')
-                                                            <input type="hidden" name="status" value="batal">
-                                                            <button type="submit" class="dropdown-item"><span class="badge bg-label-danger me-1">Batal</span></button>
+                                                            <input type="hidden" name="status" value="peminjaman selesai">
+                                                            <button type="submit" class="dropdown-item"><span class="badge bg-label-warning me-1">Peminjaman Selesai</span></button>
                                                         </form>
                                                     </div>
                                                 </div>

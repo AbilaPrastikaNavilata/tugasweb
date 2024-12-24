@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Ruang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Peminjaman;
 
 class RuangController extends Controller
 {
@@ -12,7 +14,18 @@ class RuangController extends Controller
     public function showRuangGuest()
     {
         $ruangs = Ruang::all();
-        return view('pinjamRuang', compact('ruangs'));
+        if (Auth::check()) {
+            $user = Auth::user();
+            $historiPeminjamans = Peminjaman::where('user_id', $user->id)->with('ruang')->get();
+    
+            if ($historiPeminjamans->isNotEmpty()) {
+                return view('pinjamRuang', compact('historiPeminjamans', 'ruangs')); // Data diteruskan
+            } else {
+                return view('pinjamRuang', compact('ruangs'));
+            }
+        } else {
+            return view('pinjamRuang', compact('ruangs'));
+        }
     }
 
     public function store(Request $request)
