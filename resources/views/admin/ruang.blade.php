@@ -74,6 +74,9 @@
       </tbody>
       </table>
     </div>
+    <div class="d-flex justify-content-center mt-4">
+        {{$ruangs->links()}}
+    </div>
   </div>
   <!--/ Hoverable Table rows -->
 </div>

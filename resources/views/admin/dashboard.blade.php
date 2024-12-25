@@ -11,7 +11,7 @@
                       <div class="card-body">
                         <h5 class="card-title text-primary">Welcome {{(Auth::user()->name)}} 🎉</h5>
                         <p class="mb-4">
-                          Semangat sayangku!!!! :V
+                          Semangat sayangku ❤️
                         </p>
                       </div>
                     </div>
@@ -141,6 +141,9 @@
                                 @endif
                             </tbody>
                           </table>
+                          </div>
+                          <div class="d-flex justify-content-center mt-4">
+                            {{$peminjamans->links()}}
                           </div>
                       </div>
                       <!--/ Hoverable Table rows -->

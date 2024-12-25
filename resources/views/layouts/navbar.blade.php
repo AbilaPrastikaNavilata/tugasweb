@@ -1,3 +1,8 @@
+<style>
+    .bg-blue {
+        background-color: #187bcd;
+    }
+</style>
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
     <a href="/" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
@@ -61,9 +66,10 @@
                                     <td>{{ $peminjaman->tanggal_peminjaman->format('d F Y') }}</td>
                                     <td>
                                         <span class="badge {{-- Gaya badge disederhanakan --}}
-                                            @if ($peminjaman->status == 'diproses') bg-primary
-                                            @elseif ($peminjaman->status == 'dipinjam') bg-success
-                                            @elseif ($peminjaman->status == 'batal') bg-danger
+                                            @if ($peminjaman->status == 'peminjaman diproses') bg-blue
+                                            @elseif ($peminjaman->status == 'peminjaman diterima') bg-success
+                                            @elseif ($peminjaman->status == 'peminjaman ditolak') bg-danger
+                                            @elseif ($peminjaman->status == 'peminjaman selesai') bg-warning
                                             @else bg-secondary @endif">
                                             {{ $peminjaman->status }}
                                         </span>

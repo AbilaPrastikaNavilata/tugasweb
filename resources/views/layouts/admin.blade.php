@@ -140,7 +140,7 @@
             <li class="menu-item">
                 <a href="{{route('ruang')}}" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-crown"></i>
-                  <div data-i18n="Boxicons">Edit Ruang</div>
+                  <div data-i18n="Boxicons">Ruang</div>
                 </a>
               </li>
 

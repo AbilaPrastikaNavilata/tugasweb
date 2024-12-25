@@ -12,7 +12,9 @@ class CekJadwalController extends Controller
 {
     public function cekJadwal(Request $request)
     {
-        $jadwals = Peminjaman::where('status', 'peminjaman diterima')->get();
+        $jadwals = Peminjaman::where('status', 'peminjaman diterima')
+                                ->orderby('tanggal_peminjaman', 'asc')
+                                ->paginate(7);
         if (Auth::check()) {
             $user = Auth::user();
             $historiPeminjamans = Peminjaman::where('user_id', $user->id)->with('ruang')->get();
@@ -36,10 +38,11 @@ class CekJadwalController extends Controller
         $bulan = $request->input('bulan');
         $date = Carbon::parse($bulan); // Parsing string ke objek Carbon
 
-        $jadwals = Peminjaman::where('status', 'dipinjam')
+        $jadwals = Peminjaman::where('status', 'peminjaman diterima')
                                     ->whereMonth('tanggal_peminjaman', $date->month)
                                     ->whereYear('tanggal_peminjaman', $date->year)
-                                    ->get();
+                                    ->orderby('tanggal_peminjaman', 'asc')
+                                    ->paginate(7);
         
         return view('cekjadwal', compact('jadwals'));
     }

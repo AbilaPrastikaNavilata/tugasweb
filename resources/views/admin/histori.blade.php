@@ -29,9 +29,10 @@
                   <td><a href="{{ Storage::url($peminjaman->surat_peminjaman) }}" target="blank">Surat Peminjaman</a></td>
                   <td>
                     <span class="badge me-1 text-uppercase
-                        {{ $peminjaman->status == 'diproses' ? 'bg-label-primary' :
-                           ($peminjaman->status == 'dipinjam' ? 'bg-label-success' :
-                           ($peminjaman->status == 'batal' ? 'bg-label-danger' : 'bg-label-secondary')) }}">
+                        {{ $peminjaman->status == 'peminjaman diproses' ? 'bg-label-primary' :
+                           ($peminjaman->status == 'peminjaman diterima' ? 'bg-label-success' :
+                           ($peminjaman->status == 'peminjaman ditolak' ? 'bg-label-danger' :
+                           ($peminjaman->status == 'peminjaman selesai' ? 'bg-label-warning' : 'bg-label-secondary'))) }}">
                         {{ $peminjaman->status }}
                     </span>
                   </td>
@@ -40,6 +41,9 @@
             </tbody>
         </table>
         </div>
+        <div class="d-flex justify-content-center mt-4">
+          {{$peminjamans->links()}}
+      </div>
     </div>
     <!--/ Hoverable Table rows -->
 </div>

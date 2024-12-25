@@ -41,7 +41,7 @@
                                         <td>{{ $jadwal->ruang->name_ruang }}</td>
                                         <td>{{ $jadwal->tanggal_peminjaman->format('d F Y') }}</td>
                                         <td>
-                                            <button class="btn btn-primary btn-sm text-uppercase" disabled>{{ $jadwal->status }}</button>
+                                            <button class="btn btn-success btn-sm text-uppercase" disabled>{{ $jadwal->status }}</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -55,6 +55,9 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="d-flex justify-content-center mt-4">
+                {{$jadwals->links()}}
             </div>
             <!--/ Hoverable Table rows -->
         </div>
